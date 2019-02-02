@@ -18,10 +18,11 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'DemoApp') }}
@@ -37,10 +38,13 @@
                                 <a class="nav-link" href="\"><b>{{ __('Service') }}</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="\"><b>{{ __('About Us') }}</b></a>
+                                <a class="nav-link" href="\posts"><b>{{ __('Blog') }}</b></a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="\posts"><b>{{ __('Posts') }}</b></a>
+                                <a class="nav-link" href="\posts\create"><b>{{ __('Post') }}</b></a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="\"><b>{{ __('About Us') }}</b></a>
                             </li>
 
                     </ul>
@@ -65,6 +69,7 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/home">Dashboard</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -83,8 +88,12 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            <div class="container">
+                @include('inc.messages')
+                @yield('content')
+            </div>
         </main>
     </div>
+    
 </body>
 </html>

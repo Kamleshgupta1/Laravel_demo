@@ -13,8 +13,26 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                    <a href="/posts/create" class="btn btn-primary">Create Posts</a>
+                    <br><br>
+                    <h3>Your Blog Posts.</h3>
+                    
+                    @if(count($posts) > 0)
+                    <table class="table table-striped">
+                        <tr>
+                            <th>Title</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                        @foreach($posts as $post)
+                            <tr>
+                                <th>{{$post->title}}</th>
+                                <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a></th>
+                                <th></th>
+                            </tr>
+                        @endforeach
+                    </table>
+                    @endif
                 </div>
             </div>
         </div>
