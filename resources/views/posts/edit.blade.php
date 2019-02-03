@@ -10,7 +10,7 @@
                 <div class="card-header"><b><h3>Edit Post</h3></b></div>
 
                 <div class="card-body">
-                    {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST']) !!}
+                    {!! Form::open(['action' => ['PostsController@update', $post->id], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
                         <div class="form-group">
                             {{Form::label('title', 'Title')}}
                             {{Form::text('title', $post->title, ['class'=> 'form-control', 'placeholder'=> 'Title'])}}
@@ -18,6 +18,13 @@
                             {{Form::label('body', 'Body')}}
                             {{Form::textarea('body', $post->body, [ 'class' => 'form-control', 'placeholder' => 'Type your mind here...'])}}
                         </div>
+                    
+                        <div class="form-group">
+                            
+                            {{Form::file('cover_image')}}
+                            
+                        </div>
+                    
                         {{form::hidden('_method', 'PUT')}}
                         {{Form::submit('Submit', ['class'=> 'btn btn-primary'])}}
                     {!! Form::close() !!}    

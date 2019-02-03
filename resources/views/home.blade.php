@@ -28,10 +28,19 @@
                             <tr>
                                 <th>{{$post->title}}</th>
                                 <th><a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a></th>
-                                <th></th>
+                                <th>
+                                   {!!Form::open(['action' => ['PostsController@destroy', $post->id], 'method'  => 'POST', 'class' => 'float-right'])!!}
+                                   {{Form::hidden('_method', 'DELETE')}}
+                                   {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
+                    
+                                   {!!Form::close()!!}
+                                </th>
                             </tr>
                         @endforeach
                     </table>
+                    @else
+                        <h4>Youd have no posts.</h4>
+                    
                     @endif
                 </div>
             </div>
